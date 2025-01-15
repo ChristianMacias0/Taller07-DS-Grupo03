@@ -119,7 +119,7 @@ public class OperationsTest {
 
     @Test
     public void testSolveUsandoStringNumericoyAlfabetico() {
-        System.out.println("Probar el funcionamiento del metodoSolve al recibir un String numerico y uno alfabetico ");
+        System.out.println("Test ID: 012 ");
         String formula = "15+a";
         String expResult = "NumberFormatException";
         String result = Operations.Solve(formula);
@@ -128,7 +128,7 @@ public class OperationsTest {
     
     @Test
     public void testSolveUsandoDosOperadoresSeguidosconStringsNumericos() {
-        System.out.println("Probar funcionamiento del método Solve si recibe 2 operadores seguidos en la formula ");
+        System.out.println("Test ID: 013 ");
         String formula = "2**2";
         String expResult = " DobleOperadorException";
         String result = Operations.Solve(formula);
@@ -138,12 +138,15 @@ public class OperationsTest {
 
     @Test
     public void testSolveUsandoNumerosDecimales() {
-        System.out.println("Probar funcionamiento del método Solve si recibe números decimales");
+        System.out.println("Test ID: 014");
         String formula = "2.2+2";
         String expResult = " 4.2";
         String result = Operations.Solve(formula);
         assertEquals(expResult, result);
-        
+
+        Exception exception = assertThrows(NullPointerException.class, Operations::MakeFormula, "Debe lanzar una excepcion si el arreglo op es nulo.");
+        assertNotNull(exception);
+
     }
 
 
