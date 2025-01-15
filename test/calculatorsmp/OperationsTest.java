@@ -144,11 +144,12 @@ public class OperationsTest {
 
      @Test
     public void testSolveUsandoStringNumericoyAlfabetico() {
-        System.out.println("Solve");
+        System.out.println("Probar el funcionamiento del metodoSolve al recibir un String numerico y uno alfabetico ");
         String formula = "15+a";
         String expResult = "NumberFormatException";
         String result = Operations.Solve(formula);
         assertEquals(expResult, result);
+
         
     }
 
@@ -189,4 +190,30 @@ public class OperationsTest {
     }
 
     
+    @Test
+    public void testSolveUsandoDosOperadoresSeguidosconStringsNumericos() {
+        System.out.println("Probar funcionamiento del método Solve si recibe 2 operadores seguidos en la formula ");
+        String formula = "2**2";
+        String expResult = " DobleOperadorException";
+        String result = Operations.Solve(formula);
+        assertEquals(expResult, result);
+    }
+
+
+    @Test
+    public void testSolveUsandoNumerosDecimales() {
+        System.out.println("Probar funcionamiento del método Solve si recibe números decimales");
+        String formula = "2.2+2";
+        String expResult = " 4.2";
+        String result = Operations.Solve(formula);
+        assertEquals(expResult, result);
+        
+    }
+
+
+
+
+
+
 }
+
