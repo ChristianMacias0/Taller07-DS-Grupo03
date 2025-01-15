@@ -12,6 +12,7 @@ import java.util.Stack;
 public class Operations {
 
     private static String[] op = { "+", "-", "*", "/" };// Operation set
+    static String[] op1 = { "+", "-", "*", "/" };// Operation set
 
     public static String MakeFormula(){
         System.out.println("git modify");
@@ -23,7 +24,7 @@ public class Operations {
         while (start <= count){
             int operation = (int) (Math.random() * 3); // generate operator
             int number2 = (int) (Math.random() * 99) + 1;
-            build.append(op[operation]).append(number2);
+            build.append(op1[operation]).append(number2);
             start ++;
         }
         return build.toString();
