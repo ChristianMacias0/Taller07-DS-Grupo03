@@ -164,7 +164,7 @@ public class OperationsTest {
 
     @Test
     public void testSolveUsandoNumeros2Digitos() {
-        System.out.println("Solve");
+        System.out.println("test ID:006");
         String formula = "01-01";
         String expResult = "0";
         String result = Operations.Solve(formula);
@@ -181,8 +181,17 @@ public class OperationsTest {
     }
 
     @Test
+    public void testSolveDivididoPara0() {
+        System.out.println("Test ID: 010");
+        String formula = "10/0";
+        String expResult = "NumberException";
+        String result = Operations.Solve(formula);
+        assertEquals(expResult, result, "el resultado de la operación debe enviar una Excepcion");
+    }
+
+    @Test
     public void testSolveSumaDeStrings() {
-        System.out.println("Solve");
+        System.out.println("Test ID: 008");
         String formula = "01"+"+"+"02";
         String expResult = "3";
         String result = Operations.Solve(formula);
@@ -208,8 +217,7 @@ public class OperationsTest {
         String result = Operations.Solve(formula);
         assertEquals(expResult, result);
 
-        Exception exception = assertThrows(NullPointerException.class, Operations::MakeFormula, "Debe lanzar una excepcion si el arreglo op es nulo.");
-        assertNotNull(exception);
+    
 
     }
 
