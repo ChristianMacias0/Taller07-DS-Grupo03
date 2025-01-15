@@ -11,7 +11,7 @@ public class OperationsTest {
      */
     @Test
     public void testMakeFormulaValidOp() {
-        System.out.println("Test ID: 001 - MakeFormula with valid op array");
+        System.out.println("Test ID: 001");
         // Simular un arreglo op correcto
         String[] originalOp = Operations.op1;
         Operations.op1 = new String[]{"+", "-", "*", "/"};
@@ -31,7 +31,7 @@ public class OperationsTest {
      */
     @Test
     public void testMakeFormulaInvalidOp() {
-        System.out.println("Test ID: 002 - MakeFormula with invalid op array");
+        System.out.println("Test ID: 002");
         // Simular un arreglo op inválido
         String[] originalOp = Operations.op1;
         Operations.op1 = new String[]{"456", "gr", "hth", "567"};
@@ -51,7 +51,7 @@ public class OperationsTest {
      */
     @Test
     public void testMakeFormulaSingleOp() {
-        System.out.println("Test ID: 003 - MakeFormula with single-element op array");
+        System.out.println("Test ID: 003");
         // Simular un arreglo op con un solo elemento
         String[] originalOp = Operations.op1;
         Operations.op1 = new String[]{"+"};
@@ -71,7 +71,7 @@ public class OperationsTest {
      */
     @Test
     public void testMakeFormulaEmptyOp() {
-        System.out.println("Test ID: 004 - MakeFormula with empty op array");
+        System.out.println("Test ID: 004");
         // Simular un arreglo op vacío
         String[] originalOp = Operations.op1;
         Operations.op1 = new String[]{};
@@ -90,7 +90,7 @@ public class OperationsTest {
      */
     @Test
     public void testMakeFormulaNullOp() {
-        System.out.println("Test ID: 005 - MakeFormula with null op array");
+        System.out.println("Test ID: 005");
         // Simular un arreglo op nulo
         String[] originalOp = Operations.op1;
         Operations.op1 = null;
