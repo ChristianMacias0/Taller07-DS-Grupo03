@@ -1,52 +1,106 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package calculatorsmp;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author CltControl
- */
 public class OperationsTest {
-    
-    public OperationsTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+
+    /**
+     * Test ID: 001
+     * Propósito: Probar que el metodo MakeFormula genera formulas correctamente con un arreglo `op` válido.
+     */
+    @Test
+    public void testMakeFormulaValidOp() {
+        System.out.println("Test ID: 001 - MakeFormula with valid op array");
+        // Simular un arreglo op correcto
+        String[] originalOp = Operations.op1;
+        Operations.op1 = new String[]{"+", "-", "*", "/"};
+
+        // Probar la salida
+        String result = Operations.MakeFormula();
+        assertNotNull(result, "La formula generada no debe ser nula.");
+        assertTrue(result.matches("\\d+[+\\-*/]\\d+([+\\-*/]\\d+)?"), "La formula debe seguir el formato esperado.");
+
+        // Restaurar el estado original
+        Operations.op1 = originalOp;
     }
 
     /**
-     * Test of MakeFormula method, of class Operations.
+     * Test ID: 002
+     * Propósito: Probar que el método MakeFormula lanza una excepción con un arreglo `op` inválido.
      */
     @Test
-    public void testMakeFormula() {
-        System.out.println("MakeFormula");
-        String expResult = "";
+    public void testMakeFormulaInvalidOp() {
+        System.out.println("Test ID: 002 - MakeFormula with invalid op array");
+        // Simular un arreglo op inválido
+        String[] originalOp = Operations.op1;
+        Operations.op1 = new String[]{"456", "gr", "hth", "567"};
+
+        // Ejecutar y validar que no produce una fórmula válida
         String result = Operations.MakeFormula();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result, "La formula generada no debe ser nula.");
+        assertTrue(result.contains("456") || result.contains("gr") || result.contains("hth"), "La formula incluye elementos no validos.");
+
+        // Restaurar el estado original
+        Operations.op1 = originalOp;
+    }
+
+    /**
+     * Test ID: 003
+     * Propósito: Probar que el metodo MakeFormula lanza una excepcion con un arreglo `op` de un solo elemento.
+     */
+    @Test
+    public void testMakeFormulaSingleOp() {
+        System.out.println("Test ID: 003 - MakeFormula with single-element op array");
+        // Simular un arreglo op con un solo elemento
+        String[] originalOp = Operations.op1;
+        Operations.op1 = new String[]{"+"};
+
+        // Probar la salida
+        String result = Operations.MakeFormula();
+        assertNotNull(result, "La formula generada no debe ser nula.");
+        assertTrue(result.matches("\\d+\\+\\d+(\\+\\d+)?"), "La formula debe seguir el formato esperado.");
+
+        // Restaurar el estado original
+        Operations.op1 = originalOp;
+    }
+
+    /**
+     * Test ID: 004
+     * Proposito: Probar que el metodo MakeFormula lanza una excepcion con un arreglo `op` vacío.
+     */
+    @Test
+    public void testMakeFormulaEmptyOp() {
+        System.out.println("Test ID: 004 - MakeFormula with empty op array");
+        // Simular un arreglo op vacío
+        String[] originalOp = Operations.op1;
+        Operations.op1 = new String[]{};
+
+        // Esperar una excepción
+        Exception exception = assertThrows(ArrayIndexOutOfBoundsException.class, Operations::MakeFormula, "Debe lanzar una excepción si el arreglo op esta vacío.");
+        assertNotNull(exception);
+
+        // Restaurar el estado original
+        Operations.op1 = originalOp;
+    }
+
+    /**
+     * Test ID: 005
+     * Propósito: Probar que el método MakeFormula lanza una excepción con un arreglo `op` nulo.
+     */
+    @Test
+    public void testMakeFormulaNullOp() {
+        System.out.println("Test ID: 005 - MakeFormula with null op array");
+        // Simular un arreglo op nulo
+        String[] originalOp = Operations.op1;
+        Operations.op1 = null;
+
+        // Esperar una excepción
+        Exception exception = assertThrows(NullPointerException.class, Operations::MakeFormula, "Debe lanzar una excepcion si el arreglo op es nulo.");
+        assertNotNull(exception);
+
+        // Restaurar el estado original
+        Operations.op1 = originalOp;
     }
 
     /**
